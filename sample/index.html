@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sample</title>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery.focus-validate.js"></script>
+<style>
+td.invalid{
+    background:#fee !important;
+}
+input.focus {
+    border-width:2px !important;
+    border-color:#f00 !important;
+    background:#ffe !important;
+}
+.submit {
+	text-align:center;
+}
+.submit a {
+	display:block;
+	width:200px;
+	height:30px;
+	border:solid 2px;
+}
+</style>
+<script language="javascript">
+<!--
+var $jqfv;
+$(function()
+{
+	$jqfv = $('#form1').jQfocusValidation({
+		0:{
+	        'type':'select',
+	        'name':'Job'
+	    },
+	    1:{
+	        'type':'text',
+	        'name':'Name'
+	    },
+	    2:{
+	        'type':'radio',
+	        'name':'YesNo'
+	    }}
+	);
+});
+// -->
+</script>
+</head>
+
+<body>
+	<form action="#" method="post" name="form1" id="form1">
+		<table>
+		<tr>
+		<th>Job</th>
+		<td>
+			<select name="Job">
+				<option value="">select one</option>
+				<option value="option1">option1</option>
+				<option value="option2">option2</option>
+				<option value="option3">option3</option>
+			</select>
+		</td>
+		</tr>
+		<tr>
+		<th>Name</th>
+		<td>
+			<input name="Name" type="text">
+		</td>
+		</tr>
+		<tr>
+		<th>YesNo</th>
+		<td>
+			<input type="radio" name="YesNo" value="1" id="YesNo1" /><label for="YesNo1">Yes</label>
+			&nbsp;&nbsp;
+			<input type="radio" name="YesNo" value="2" id="YesNo2" /><label for="YesNo2">No</label>
+		</td>
+		</tr>
+		</table>
+		<div class="submit">
+		<a href="javascript:$jqfv.check_before();">Submit</a>
+		</div>
+	</form>
+
+</body>
+</html> 
