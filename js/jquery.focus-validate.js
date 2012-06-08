@@ -1,9 +1,9 @@
 /**
  * jQfocusValidation
  *
- * @version      0.9
+ * @version      0.91
  *
- * 2012-05-11
+ * 2012-06-09
  */
 ;(function($, window, document, undefined) {
 	var jQfocusValidation = function(elem, options) {
@@ -26,27 +26,27 @@
 		        var name = conf[i].name;
 		        var val;
 		        if(type=='radio') {
-		            $('input[name='+name+']').change(function(){
+		            $(self.elem[0].elements[ name ]).change(function(){
 		                self.check_before($(this).attr('name'));
 		            });
 		        } else if(type=='text') {
-		            $('input[name='+name+']').focus(function(){
+					$(self.elem[0].elements[ name ]).focus(function(){
 		                $(this).addClass('focus');
 		                self.check_before($(this).attr('name'));
 		            });
-		            $('input[name='+name+']').blur(function(){
+		            $(self.elem[0].elements[ name ]).blur(function(){
 		                $(this).removeClass('focus');
 		            });
 		        } else if(type=='select') {
-		            $('select[name='+name+']').change(function(){
+		            $(self.elem[0].elements[ name ]).change(function(){
 		                self.check_before($(this).attr('name'));
 		            });
 		        } else if(type=='textarea') {
-		            $('textarea[name='+name+']').focus(function(){
+		            $(self.elem[0].elements[ name ]).focus(function(){
 		                $(this).addClass('focus');
 		                self.check_before($(this).attr('name'));
 		            });
-		            $('textarea[name='+name+']').blur(function(){
+		            $(self.elem[0].elements[ name ]).blur(function(){
 		                $(this).removeClass('focus');
 		            });
 		        }
@@ -77,32 +77,36 @@
 		        }
         
 		        if(type=='radio') {
-		            var val = $('input[name='+name+']:checked').val();
+					var cur_obj = $(self.elem[0].elements[ name ]);
+					var val = cur_obj.filter(":checked").val();
 		            if( typeof(val)=='undefined' || val=='') {
-		                $('input[name='+name+']').parent().addClass('invalid');
+		                cur_obj.parent().addClass('invalid');
 		            } else {
-		                $('input[name='+name+']').parent().removeClass('invalid');
+		                cur_obj.parent().removeClass('invalid');
 		            }
 		        } else if(type=='text') {
-		            var val = $('input[name='+name+']').val();
+					var cur_obj = $(self.elem[0].elements[ name ]);
+		            var val = cur_obj.val();
 		            if( typeof(val)=='undefined' || val=='') {
-		                $('input[name='+name+']').parent().addClass('invalid');
+		                cur_obj.parent().addClass('invalid');
 		            } else {
-		                $('input[name='+name+']').parent().removeClass('invalid');
+		                cur_obj.parent().removeClass('invalid');
 		            }
 		        } else if(type=='textarea') {
-		            var val = $('textarea[name='+name+']').val();
+					var cur_obj = $(self.elem[0].elements[ name ]);
+		            var val = cur_obj.val();
 		            if( typeof(val)=='undefined' || val=='') {
-		                $('textarea[name='+name+']').parent().addClass('invalid');
+		                cur_obj.parent().addClass('invalid');
 		            } else {
-		                $('textarea[name='+name+']').parent().removeClass('invalid');
+		                cur_obj.parent().removeClass('invalid');
 		            }
 		        } else if(type=='select') {
-		            var val = $('select[name='+name+']').val();
+		            var cur_obj = $(self.elem[0].elements[ name ]);
+		            var val = cur_obj.val();
 		            if( typeof(val)=='undefined' || val=='') {
-		                $('select[name='+name+']').parent().addClass('invalid');
+		                cur_obj.parent().addClass('invalid');
 		            } else {
-		                $('select[name='+name+']').parent().removeClass('invalid');
+		                cur_obj.parent().removeClass('invalid');
 		            }
 		        }
 		    }
